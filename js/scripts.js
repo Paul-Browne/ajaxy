@@ -9,38 +9,52 @@
 //   }
 // }
 
-// run once
+
+// if hash string contains a word in a href, load that page... repeat... for as many times as there are '#' symbols, start from the left...
+// 
+
+
+
+function meat(z) {
+  if(z.href == window.location.href){
+    var _id = z.getAttribute('ajaxy-target');
+    var _target = document.getElementById(_id);
+    var _content = z.getAttribute('ajaxy-content');
+    if(_id.indexOf(',') < 0){
+      httpGet(_content, _target);
+    }
+    else{
+      var _id = z.getAttribute('ajaxy-target').split(',');
+      var _content = z.getAttribute('ajaxy-content').split(',');
+      var j = _id.length;
+      while(j--){
+        var taggy = document.getElementById(_id[j].trim());
+        var connie = _content[j].trim();
+        httpGet(connie, taggy);
+      }
+    }
+  }
+}
+
+
 function updatePage(){
   var all = document.getElementsByTagName('*');
   var i = all.length;
   var loc = window.location
   if(loc.hash){
     while(i--){
-      if(all[i].href == window.location){
-        var _id = all[i].getAttribute('ajaxy-target');
-        var _target = document.getElementById(_id);
-        var _content = all[i].getAttribute('ajaxy-content');
-        if(_id.indexOf(',') < 0){
-          httpGet(_content, _target);
-        }
-        else{
-          var _id = all[i].getAttribute('ajaxy-target').split(',');
-          var _content = all[i].getAttribute('ajaxy-content').split(',');
-          var j = _id.length;
-          while(j--){
-            var taggy = document.getElementById(_id[j].trim());
-            var connie = _content[j].trim();
-            httpGet(connie, taggy);
-          }
-        }
-      }
+      meat(all[i]);
     }
   }
 }
-
+// run once
 updatePage();
+
+// run when the hash changes
+// works for nested hashes
 window.addEventListener('hashchange', function(){
   updatePage();
+  console.log("hash change detected");
 });
 
 

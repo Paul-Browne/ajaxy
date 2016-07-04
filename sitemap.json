@@ -1,0 +1,46 @@
+{
+  "root":[
+    {
+    "name": "contact",
+    "children": [
+      {
+        "name": "map",
+        "children": [
+          {
+            "name": "something-else"
+          }
+        ]
+      },
+      {
+        "name": "address",
+        "children": [
+          {
+            "name": "moremoremore"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "home",
+    "children": [
+      {
+        "name": "blog",
+        "children": [
+          {
+            "name": "something-else"
+          }
+        ]
+      },
+      {
+        "name": "news",
+        "children": [
+          {
+            "name": "moremoremore"
+          }
+        ]
+      }
+    ]
+  }
+]
+}
