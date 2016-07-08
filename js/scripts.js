@@ -9,9 +9,56 @@
 //   }
 // }
 
+var arrr = [];
+function traverse(o) {
+    for (i in o) {
+        if (!!o[i] && typeof(o[i])=="object") {
+            //console.log(o[i].length);
+            //if(o[i].length){
+              var j = o[i].length;
+              while(j--){
+                  console.log([o[i][j].name, o.name]);
+              }
+            //}
+            //console.log(i);
+            //
+            //console.log([o.name, i]);
+            // if(o[i].name){
+            //   console.log(o[i].name);
+            //   console.log(Object.keys(o[i]));
+            // }
+            //console.log(Object.keys(o));
+            traverse(o[i]);
+        }
+    }
+}
 
-// if hash string contains a word in a href, load that page... repeat... for as many times as there are '#' symbols, start from the left...
-// 
+var json = new XMLHttpRequest();
+json.open('GET', '/sitemap.json', true);
+json.onreadystatechange = function() {
+  if (json.readyState==4 && json.status==200) {
+
+
+    var obj = JSON.parse(json.responseText);
+
+traverse(obj);
+
+    // var pl = obj.pages;
+    // var j = pl.length;
+    // while(j--){
+    //   var tt = pl[j].name;
+    //   console.log(tt);
+    // };
+    //
+    //
+    //
+    // console.log(obj.pages);
+
+
+
+  }
+};
+json.send(null);
 
 
 
@@ -62,10 +109,10 @@ function httpGet(theUrl, target){
   var xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange=function()
   {
-      if (xmlhttp.readyState==4 && xmlhttp.status==200)
-      {
-        target.innerHTML = xmlhttp.responseText;
-      }
+    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+      target.innerHTML = xmlhttp.responseText;
+    }
   }
   xmlhttp.open("GET", theUrl, true);
   xmlhttp.send();

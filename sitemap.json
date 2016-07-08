@@ -1,46 +1,34 @@
 {
-  "root":[
+  "pages":[
     {
-    "name": "contact",
-    "children": [
-      {
-        "name": "map",
-        "children": [
-          {
-            "name": "something-else"
-          }
-        ]
-      },
-      {
-        "name": "address",
-        "children": [
-          {
-            "name": "moremoremore"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "name": "home",
-    "children": [
-      {
-        "name": "blog",
-        "children": [
-          {
-            "name": "something-else"
-          }
-        ]
-      },
-      {
-        "name": "news",
-        "children": [
-          {
-            "name": "moremoremore"
-          }
-        ]
-      }
-    ]
-  }
-]
+      "name": "contact",
+      "pages": [
+        {
+          "name": "map",
+          "pages": [
+            {
+              "name": "something-else"
+            }
+          ]
+        },
+        {
+          "name": "address",
+          "pages": [
+            {
+              "name": "more more"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "home"
+    },
+    {
+      "name": "pricing"
+    },
+    {
+      "name": "about"
+    }
+  ]
 }
