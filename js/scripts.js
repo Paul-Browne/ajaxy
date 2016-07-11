@@ -1,33 +1,22 @@
-// while (i--){
-//   if(all[i].getAttribute("ajaxy-content")){
-//     all[i].addEventListener('click', function clik(e){
-//       var _id = this.getAttribute('ajaxy-target');
-//       var _target = document.getElementById(_id);
-//       var _content = this.getAttribute('ajaxy-content')
-//       httpGet(_content, _target);
-//     });
-//   }
-// }
-
-var arrr = [];
+var arr = [];
 function traverse(o) {
     for (i in o) {
         if (!!o[i] && typeof(o[i])=="object") {
-            //console.log(o[i].length);
-            //if(o[i].length){
               var j = o[i].length;
               while(j--){
-                  console.log([o[i][j].name, o.name]);
+                  if(o.name){
+                      var k = arr.length;
+                      while(k--){
+                        if(arr[k][0] == o.name){
+                          arr.push([o[i][j].name,o.name ]);
+                          arr[arr.length-1] = arr[arr.length-1].concat(arr[k].slice(1));
+                        }
+                      }
+                  }
+                  else{
+                      arr.push([o[i][j].name]);
+                  }
               }
-            //}
-            //console.log(i);
-            //
-            //console.log([o.name, i]);
-            // if(o[i].name){
-            //   console.log(o[i].name);
-            //   console.log(Object.keys(o[i]));
-            // }
-            //console.log(Object.keys(o));
             traverse(o[i]);
         }
     }
@@ -37,25 +26,19 @@ var json = new XMLHttpRequest();
 json.open('GET', '/sitemap.json', true);
 json.onreadystatechange = function() {
   if (json.readyState==4 && json.status==200) {
-
-
     var obj = JSON.parse(json.responseText);
-
-traverse(obj);
-
-    // var pl = obj.pages;
-    // var j = pl.length;
-    // while(j--){
-    //   var tt = pl[j].name;
-    //   console.log(tt);
-    // };
-    //
-    //
-    //
-    // console.log(obj.pages);
-
-
-
+    traverse(obj);
+    console.log(arr);
+    var l = arr.length;
+    while(l--){
+      if(arr[l][0] == window.location.hash.slice(1) ){
+        console.log(window.location.hash.slice(1));
+        var m = arr[l].length;
+        while(m--){
+          console.log(arr[l][m]);
+        }
+      }
+    }
   }
 };
 json.send(null);

@@ -7,7 +7,17 @@
           "name": "map",
           "pages": [
             {
-              "name": "something-else"
+              "name": "something-else",
+              "pages": [
+                {
+                  "name": "even moooore",
+                  "pages": [
+                    {
+                      "name": "even even moooore"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
