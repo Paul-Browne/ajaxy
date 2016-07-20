@@ -1,7 +1,7 @@
 {
   "pages":[
     {
-      "name": "contact",
+      "name": "about",
       "pages": [
         {
           "name": "map",
@@ -22,7 +22,7 @@
           ]
         },
         {
-          "name": "address",
+          "name": "blog",
           "pages": [
             {
               "name": "more more"
@@ -38,7 +38,7 @@
       "name": "pricing"
     },
     {
-      "name": "about"
+      "name": "contact"
     }
   ]
 }
